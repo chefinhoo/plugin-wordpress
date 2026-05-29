@@ -1,0 +1,68 @@
+/* Customizacoes globais do painel administrativo DRA */
+:root {
+  --dra-brand: #0b5f4a;
+  --dra-brand-dark: #084a39;
+  --dra-surface: #f3f8f6;
+  --dra-border: #cfe1da;
+}
+
+.wp-admin {
+  background: linear-gradient(180deg, #f7faf9 0%, #eef5f2 100%);
+}
+
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenuback,
+#adminmenuwrap {
+  background: var(--dra-brand-dark);
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu,
+#adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
+#adminmenu .wp-submenu.wp-submenu-wrap,
+#adminmenu .wp-submenu a {
+  background: var(--dra-brand-dark);
+}
+
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu li.wp-has-current-submenu .wp-submenu a {
+  color: #ffffff;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu a:hover,
+#adminmenu a:hover,
+#adminmenu li.menu-top > a:focus {
+  color: #9ef3d2;
+}
+
+.wrap h1,
+.wrap .wp-heading-inline {
+  color: var(--dra-brand-dark);
+}
+
+.postbox,
+.notice,
+.components-card,
+.widefat {
+  border-radius: 10px;
+  border-color: var(--dra-border);
+}
+
+.widefat thead th,
+.widefat tfoot th {
+  background: var(--dra-surface);
+}
+
+.wp-core-ui .button-primary {
+  background: var(--dra-brand);
+  border-color: var(--dra-brand);
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus {
+  background: var(--dra-brand-dark);
+  border-color: var(--dra-brand-dark);
+}

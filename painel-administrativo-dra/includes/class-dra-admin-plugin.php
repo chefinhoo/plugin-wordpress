@@ -49,6 +49,17 @@ final class DRA_Admin_Plugin {
     }
 
     public function enqueue_assets($hook_suffix) {
+        $global_style_path = DRA_PAINEL_PLUGIN_PATH . 'assets/dist/admin-global.css';
+
+        if (file_exists($global_style_path)) {
+            wp_enqueue_style(
+                'dra-painel-global-style',
+                DRA_PAINEL_PLUGIN_URL . 'assets/dist/admin-global.css',
+                array(),
+                filemtime($global_style_path)
+            );
+        }
+
         if ($hook_suffix !== $this->page_hook) {
             return;
         }
