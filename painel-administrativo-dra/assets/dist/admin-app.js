@@ -76,6 +76,16 @@
             }
           },
           'Configuracoes'
+        ),
+        el(
+          Button,
+          {
+            variant: tab === 'categorias' ? 'primary' : 'secondary',
+            onClick: function () {
+              setTab('categorias');
+            }
+          },
+          'Categorias'
         )
       ),
       el(
@@ -119,6 +129,22 @@
                     onClick: saveChanges
                   },
                   'Salvar alteracoes'
+                )
+              )
+            : null
+            ,
+          tab === 'categorias'
+            ? el(
+                'div',
+                null,
+                el('h2', null, 'Categorias'),
+                el('p', null, 'Conteudo de categorias preparado para organizacao editorial e administrativa.'),
+                el(
+                  'ul',
+                  null,
+                  el('li', null, 'Categorias principais ativas'),
+                  el('li', null, 'Subcategorias habilitadas'),
+                  el('li', null, 'Padrao de nomenclatura interno DRA')
                 )
               )
             : null

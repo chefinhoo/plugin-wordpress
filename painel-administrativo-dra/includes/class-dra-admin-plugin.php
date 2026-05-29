@@ -16,6 +16,11 @@ final class DRA_Admin_Plugin {
     private $page_hook = '';
 
     /**
+     * @var bool
+     */
+    private $assets_ready = true;
+
+    /**
      * @return DRA_Admin_Plugin
      */
     public static function get_instance() {
@@ -51,6 +56,12 @@ final class DRA_Admin_Plugin {
         $script_path = DRA_PAINEL_PLUGIN_PATH . 'assets/dist/admin-app.js';
         $style_path  = DRA_PAINEL_PLUGIN_PATH . 'assets/dist/admin-app.css';
 
+        if (! file_exists($script_path) || ! file_exists($style_path)) {
+            $this->assets_ready = false;
+
+            return;
+        }
+
         wp_enqueue_style(
             'dra-painel-admin-style',
             DRA_PAINEL_PLUGIN_URL . 'assets/dist/admin-app.css',
@@ -70,6 +81,16 @@ final class DRA_Admin_Plugin {
     public function render_app() {
         echo '<div class="wrap">';
         echo '<h1>' . esc_html__('Painel Administrativo DRA', 'painel-administrativo-dra') . '</h1>';
+
+        if (! $this->assets_ready) {
+            echo '<div class="notice notice-error"><p>';
+            echo esc_html__('Build do React ausente. Gere os arquivos em assets/dist antes de usar o painel.', 'painel-administrativo-dra');
+            echo '</p></div>';
+            echo '</div>';
+
+            return;
+        }
+
         echo '<div id="dra-admin-root"></div>';
         echo '<noscript>' . esc_html__('Ative JavaScript para usar o painel React.', 'painel-administrativo-dra') . '</noscript>';
         echo '</div>';

@@ -46,6 +46,14 @@ function App() {
           onClick: () => setTab('configuracoes')
         },
         'Configuracoes'
+      ),
+      createElement(
+        Button,
+        {
+          variant: tab === 'categorias' ? 'primary' : 'secondary',
+          onClick: () => setTab('categorias')
+        },
+        'Categorias'
       )
     ),
     createElement(
@@ -91,6 +99,21 @@ function App() {
                 'Salvar alteracoes'
               )
             )
+            : null,
+        tab === 'categorias'
+          ? createElement(
+              'div',
+              null,
+              createElement('h2', null, 'Categorias'),
+              createElement('p', null, 'Conteudo de categorias preparado para organizacao editorial e administrativa.'),
+              createElement(
+                'ul',
+                null,
+                createElement('li', null, 'Categorias principais ativas'),
+                createElement('li', null, 'Subcategorias habilitadas'),
+                createElement('li', null, 'Padrao de nomenclatura interno DRA')
+              )
+            )
           : null
       )
     )
@@ -102,7 +125,7 @@ const rootElement = document.getElementById('dra-admin-root');
 if (rootElement) {
   if (typeof createRoot === 'function') {
     createRoot(rootElement).render(createElement(App));
-  } else {
+  } else if (typeof render === 'function') {
     render(createElement(App), rootElement);
   }
 }
