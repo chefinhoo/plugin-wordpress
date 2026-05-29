@@ -1,0 +1,31 @@
+.dra-admin-shell {
+  margin-top: 16px;
+  max-width: 960px;
+}
+
+.dra-admin-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.dra-admin-card {
+  border: 1px solid #dcdcde;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.dra-admin-card h2 {
+  margin-top: 0;
+}
+
+.dra-admin-notice {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 782px) {
+  .dra-admin-shell {
+    margin-top: 12px;
+  }
+}
