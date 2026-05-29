@@ -1,0 +1,11 @@
+{
+  "name": "painel-administrativo-dra-react",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Painel Administrativo DRA em React",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "echo 'build handled by committed dist files'",
+    "start": "echo 'use WordPress admin to run the plugin'"
+  }
+}

@@ -1,0 +1,121 @@
+/* =============================================================================
+   Panel Administrativo Danilo Ramos - Estilos Admin v3.2
+   =============================================================================
+ */
+
+/* Reset + Layout Geral */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+    margin: 0 !important; padding: 0 !important;
+    background: #f0f2f5 !important;
+    font-family: 'Lato', sans-serif !important;
+    color: #555 !important;
+}
+#wpadminbar { display: none !important; }
+html.wp-toolbar { padding-top: 0 !important; }
+*::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none !important; }
+
+#wpwrap {
+    display: flex !important; min-height: 100vh !important;
+    overflow: visible !important; margin: 0 !important; padding: 0 !important;
+}
+body.wp-admin { margin: 0 !important; padding: 0 !important; overflow-x: hidden !important; overflow-y: auto !important; }
+
+/* Menu Lateral */
+@media only screen and (min-width: 783px) {
+    #adminmenuback { display: none !important; }
+    #adminmenuwrap {
+        width: 260px !important; min-width: 260px !important; max-width: 260px !important;
+        height: 100vh !important; position: relative !important;
+        overflow-y: auto !important; overflow-x: hidden !important; flex-shrink: 0 !important;
+    }
+    #wpcontent {
+        flex: 1 !important; display: flex !important; flex-direction: column !important;
+        overflow: visible !important; margin-left: 0 !important; min-width: 0 !important;
+    }
+    #wpfooter { display: none !important; }
+}
+#adminmenuwrap { background: #fff !important; border-right: 1px solid #ebebeb !important; z-index: 1000 !important; }
+
+/* Logo */
+#adminmenuwrap::before {
+    content: ""; display: block; width: 100%; height: 90px;
+    background: #fff; /* logo removed to avoid external references */
+}
+/* Subtítulo */
+#adminmenuwrap::after {
+    content: "PAINEL DE CONTROLE"; display: block; text-align: center;
+    font-size: 8px; font-weight: 700; letter-spacing: 0.15em; color: #bbb;
+    padding: 4px 0 10px; font-family: 'Lato', sans-serif;
+    white-space: nowrap; overflow: hidden;
+}
+
+/* adminmenu base */
+#adminmenu { margin-top: 0 !important; background: #fff !important; padding: 0 !important; width: 100% !important; }
+#adminmenu li, #adminmenu .wp-submenu li {
+    background: #fff !important; color: #555 !important;
+    box-shadow: none !important; border: none !important;
+}
+#adminmenu a.menu-top {
+    color: #555 !important; font-size: 14px !important; font-weight: 400 !important;
+    padding: 11px 20px !important; line-height: 1.4 !important;
+    display: flex !important; align-items: center !important;
+    background: #fff !important; height: auto !important; width: 100% !important;
+    white-space: nowrap; overflow: hidden; transition: color .15s;
+}
+
+/* Ícones apenas para Config + Personalização */
+#adminmenu li.toplevel_page_config-gerais-custom .wp-menu-image,
+#adminmenu li.toplevel_page_personalizacao-custom .wp-menu-image {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    width: 22px !important; height: 20px !important; flex-shrink: 0 !important;
+    margin-right: 8px !important; margin-left: 0 !important;
+    position: relative !important; float: none !important;
+}
+#adminmenu li.toplevel_page_config-gerais-custom .wp-menu-image::before,
+#adminmenu li.toplevel_page_personalizacao-custom .wp-menu-image::before {
+    font-family: dashicons !important; font-size: 18px !important; color: #555 !important;
+    line-height: 1 !important; display: block !important;
+    position: static !important; margin: 0 !important; padding: 0 !important;
+}
+#adminmenu li.toplevel_page_config-gerais-custom:hover .wp-menu-image::before,
+#adminmenu li.toplevel_page_config-gerais-custom.current .wp-menu-image::before,
+#adminmenu li.toplevel_page_config-gerais-custom.wp-has-current-submenu .wp-menu-image::before,
+#adminmenu li.toplevel_page_personalizacao-custom:hover .wp-menu-image::before,
+#adminmenu li.toplevel_page_personalizacao-custom.current .wp-menu-image::before,
+#adminmenu li.toplevel_page_personalizacao-custom.wp-has-current-submenu .wp-menu-image::before {
+    color: #f39c12 !important;
+}
+#adminmenu .wp-menu-image { display: none !important; }
+#adminmenu li.toplevel_page_config-gerais-custom .wp-menu-image,
+#adminmenu li.toplevel_page_personalizacao-custom .wp-menu-image { display: flex !important; }
+
+#adminmenu .wp-menu-name {
+    padding: 0 !important; margin: 0 !important; flex: 1 !important;
+    min-width: 0 !important; display: block !important;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* Hover / active */
+#adminmenu li.menu-top:hover > a.menu-top { color: #f39c12 !important; }
+#adminmenu li.current > a.menu-top,
+#adminmenu li.wp-has-current-submenu > a.menu-top { color: #f39c12 !important; font-weight: 600 !important; }
+
+/* Slot: contador + seta */
+.hoost-slot {
+    position: relative; margin-left: auto; padding-left: 8px;
+    flex-shrink: 0; min-width: 22px; height: 20px;
+    display: flex; align-items: center; justify-content: flex-end;
+}
+.hoost-menu-count {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    font-size: 13px; color: #aaa; font-weight: 500;
+    transition: opacity .15s; pointer-events: none; line-height: 1;
+}
+.hoost-arrow {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    font-family: 'FontAwesome'; color: #f39c12; font-size: 12px;
+    opacity: 0; transition: opacity .15s, transform .2s;
+    pointer-events: none; line-height: 1;
+}
