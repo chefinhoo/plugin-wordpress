@@ -6,63 +6,67 @@
   --dra-border: #cfe1da;
 }
 
-.wp-admin {
+.wp-admin.dra-admin-active {
   background: linear-gradient(180deg, #f7faf9 0%, #eef5f2 100%);
 }
 
-#adminmenu,
-#adminmenu .wp-submenu,
-#adminmenuback,
-#adminmenuwrap {
-  background: var(--dra-brand-dark);
+.wp-admin.dra-admin-active #wpadminbar {
+  background: var(--dra-brand-dark) !important;
 }
 
-#adminmenu .wp-has-current-submenu .wp-submenu,
-#adminmenu .wp-has-current-submenu.opensub .wp-submenu,
-#adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
-#adminmenu .wp-submenu.wp-submenu-wrap,
-#adminmenu .wp-submenu a {
-  background: var(--dra-brand-dark);
+.wp-admin.dra-admin-active #adminmenu,
+.wp-admin.dra-admin-active #adminmenu .wp-submenu,
+.wp-admin.dra-admin-active #adminmenuback,
+.wp-admin.dra-admin-active #adminmenuwrap {
+  background: var(--dra-brand-dark) !important;
 }
 
-#adminmenu li.current a.menu-top,
-#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
-#adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head,
-#adminmenu li.wp-has-current-submenu .wp-submenu a {
-  color: #ffffff;
+.wp-admin.dra-admin-active #adminmenu .wp-has-current-submenu .wp-submenu,
+.wp-admin.dra-admin-active #adminmenu .wp-has-current-submenu.opensub .wp-submenu,
+.wp-admin.dra-admin-active #adminmenu a.wp-has-current-submenu:focus + .wp-submenu,
+.wp-admin.dra-admin-active #adminmenu .wp-submenu.wp-submenu-wrap,
+.wp-admin.dra-admin-active #adminmenu .wp-submenu a {
+  background: var(--dra-brand-dark) !important;
 }
 
-#adminmenu .wp-has-current-submenu .wp-submenu a:hover,
-#adminmenu a:hover,
-#adminmenu li.menu-top > a:focus {
-  color: #9ef3d2;
+.wp-admin.dra-admin-active #adminmenu li.current a.menu-top,
+.wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+.wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head,
+.wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu .wp-submenu a {
+  color: #ffffff !important;
 }
 
-.wrap h1,
-.wrap .wp-heading-inline {
+.wp-admin.dra-admin-active #adminmenu .wp-has-current-submenu .wp-submenu a:hover,
+.wp-admin.dra-admin-active #adminmenu a:hover,
+.wp-admin.dra-admin-active #adminmenu li.menu-top > a:focus {
+  color: #9ef3d2 !important;
+}
+
+.wp-admin.dra-admin-active .wrap h1,
+.wp-admin.dra-admin-active .wrap .wp-heading-inline {
   color: var(--dra-brand-dark);
 }
 
-.postbox,
-.notice,
-.components-card,
-.widefat {
+.wp-admin.dra-admin-active .postbox,
+.wp-admin.dra-admin-active .notice,
+.wp-admin.dra-admin-active .components-card,
+.wp-admin.dra-admin-active .widefat {
   border-radius: 10px;
   border-color: var(--dra-border);
 }
 
-.widefat thead th,
-.widefat tfoot th {
+.wp-admin.dra-admin-active .widefat thead th,
+.wp-admin.dra-admin-active .widefat tfoot th {
   background: var(--dra-surface);
 }
 
-.wp-core-ui .button-primary {
+.wp-admin.dra-admin-active .wp-core-ui .button-primary {
   background: var(--dra-brand);
   border-color: var(--dra-brand);
 }
 
-.wp-core-ui .button-primary:hover,
-.wp-core-ui .button-primary:focus {
+.wp-admin.dra-admin-active .wp-core-ui .button-primary:hover,
+.wp-admin.dra-admin-active .wp-core-ui .button-primary:focus {
   background: var(--dra-brand-dark);
   border-color: var(--dra-brand-dark);
 }
