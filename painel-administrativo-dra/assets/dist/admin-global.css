@@ -1,17 +1,39 @@
 /* Customizacoes globais do painel administrativo DRA */
 :root {
-  --dra-brand: #0b5f4a;
-  --dra-brand-dark: #084a39;
-  --dra-surface: #f3f8f6;
-  --dra-border: #cfe1da;
+  --dra-brand: #0d6e53;
+  --dra-brand-dark: #063e31;
+  --dra-brand-soft: #1f8a69;
+  --dra-surface: #eef6f2;
+  --dra-surface-2: #e4f1eb;
+  --dra-border: #bcd7cb;
+  --dra-text: #16352c;
 }
 
 .wp-admin.dra-admin-active {
-  background: linear-gradient(180deg, #f7faf9 0%, #eef5f2 100%);
+  background: linear-gradient(180deg, #f7fbf9 0%, #eaf4ef 100%) !important;
+  color: var(--dra-text);
+}
+
+.wp-admin.dra-admin-active #wpwrap,
+.wp-admin.dra-admin-active #wpcontent,
+.wp-admin.dra-admin-active #wpbody,
+.wp-admin.dra-admin-active #wpbody-content {
+  background: transparent !important;
 }
 
 .wp-admin.dra-admin-active #wpadminbar {
   background: var(--dra-brand-dark) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.wp-admin.dra-admin-active #wpadminbar .ab-item,
+.wp-admin.dra-admin-active #wpadminbar a.ab-item {
+  color: #d8f8ea !important;
+}
+
+.wp-admin.dra-admin-active #wpadminbar .ab-item:hover,
+.wp-admin.dra-admin-active #wpadminbar a.ab-item:hover {
+  color: #ffffff !important;
 }
 
 .wp-admin.dra-admin-active #adminmenu,
@@ -19,6 +41,17 @@
 .wp-admin.dra-admin-active #adminmenuback,
 .wp-admin.dra-admin-active #adminmenuwrap {
   background: var(--dra-brand-dark) !important;
+}
+
+.wp-admin.dra-admin-active #adminmenuwrap {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wp-admin.dra-admin-active #adminmenu .wp-menu-name,
+.wp-admin.dra-admin-active #adminmenu .wp-submenu a,
+.wp-admin.dra-admin-active #adminmenu .wp-submenu-head,
+.wp-admin.dra-admin-active #adminmenu div.wp-menu-image:before {
+  color: #d8f8ea !important;
 }
 
 .wp-admin.dra-admin-active #adminmenu .wp-has-current-submenu .wp-submenu,
@@ -29,11 +62,23 @@
   background: var(--dra-brand-dark) !important;
 }
 
+.wp-admin.dra-admin-active #adminmenu li.menu-top:hover,
+.wp-admin.dra-admin-active #adminmenu li.opensub > a.menu-top,
+.wp-admin.dra-admin-active #adminmenu li.menu-top > a:focus,
+.wp-admin.dra-admin-active #adminmenu li.menu-top > a:active {
+  background: var(--dra-brand-soft) !important;
+}
+
 .wp-admin.dra-admin-active #adminmenu li.current a.menu-top,
 .wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
 .wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head,
 .wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu .wp-submenu a {
   color: #ffffff !important;
+}
+
+.wp-admin.dra-admin-active #adminmenu li.current a.menu-top,
+.wp-admin.dra-admin-active #adminmenu li.wp-has-current-submenu > a.wp-has-current-submenu {
+  background: var(--dra-brand) !important;
 }
 
 .wp-admin.dra-admin-active #adminmenu .wp-has-current-submenu .wp-submenu a:hover,
@@ -44,29 +89,62 @@
 
 .wp-admin.dra-admin-active .wrap h1,
 .wp-admin.dra-admin-active .wrap .wp-heading-inline {
-  color: var(--dra-brand-dark);
+  color: var(--dra-brand-dark) !important;
 }
 
 .wp-admin.dra-admin-active .postbox,
 .wp-admin.dra-admin-active .notice,
 .wp-admin.dra-admin-active .components-card,
 .wp-admin.dra-admin-active .widefat {
-  border-radius: 10px;
-  border-color: var(--dra-border);
+  border-radius: 12px !important;
+  border-color: var(--dra-border) !important;
+  box-shadow: 0 8px 24px rgba(6, 62, 49, 0.08) !important;
 }
 
 .wp-admin.dra-admin-active .widefat thead th,
 .wp-admin.dra-admin-active .widefat tfoot th {
-  background: var(--dra-surface);
+  background: var(--dra-surface) !important;
+  color: var(--dra-text) !important;
+}
+
+.wp-admin.dra-admin-active .widefat tbody tr:nth-child(odd) {
+  background: #fbfefc !important;
+}
+
+.wp-admin.dra-admin-active .widefat tbody tr:nth-child(even) {
+  background: var(--dra-surface-2) !important;
 }
 
 .wp-admin.dra-admin-active .wp-core-ui .button-primary {
-  background: var(--dra-brand);
-  border-color: var(--dra-brand);
+  background: var(--dra-brand) !important;
+  border-color: var(--dra-brand) !important;
+  color: #ffffff !important;
 }
 
 .wp-admin.dra-admin-active .wp-core-ui .button-primary:hover,
 .wp-admin.dra-admin-active .wp-core-ui .button-primary:focus {
-  background: var(--dra-brand-dark);
-  border-color: var(--dra-brand-dark);
+  background: var(--dra-brand-dark) !important;
+  border-color: var(--dra-brand-dark) !important;
+}
+
+.wp-admin.dra-admin-active input[type='text'],
+.wp-admin.dra-admin-active input[type='search'],
+.wp-admin.dra-admin-active input[type='email'],
+.wp-admin.dra-admin-active input[type='url'],
+.wp-admin.dra-admin-active input[type='number'],
+.wp-admin.dra-admin-active textarea,
+.wp-admin.dra-admin-active select {
+  border-color: var(--dra-border) !important;
+  border-radius: 8px !important;
+}
+
+.wp-admin.dra-admin-active input:focus,
+.wp-admin.dra-admin-active textarea:focus,
+.wp-admin.dra-admin-active select:focus {
+  border-color: var(--dra-brand) !important;
+  box-shadow: 0 0 0 1px var(--dra-brand) !important;
+}
+
+.wp-admin.dra-admin-active .notice {
+  border-left-color: var(--dra-brand) !important;
 }
