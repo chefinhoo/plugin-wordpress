@@ -34,12 +34,9 @@ final class DRA_Admin_Plugin {
     private function __construct() {
         add_action('admin_menu', array($this, 'register_admin_page'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_assets'));
-        add_filter('admin_body_class', array($this, 'append_admin_body_class'));
     }
 
-    public function append_admin_body_class($classes) {
-        return trim($classes . ' dra-admin-active');
-    }
+    
 
     public function register_admin_page() {
         $this->page_hook = add_menu_page(
