@@ -14,10 +14,21 @@
   var Notice = components.Notice || 'div';
 
   function api(path, options) {
-    return window.fetch(window.location.origin + '/wp-json' + path, Object.assign({
+    var data = window.draPanelData || {};
+    var merged = Object.assign({
       credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json' }
-    }, options || {})).then(function (response) {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': data.nonce || ''
+      }
+    }, options || {});
+
+    merged.headers = Object.assign({
+      'Content-Type': 'application/json',
+      'X-WP-Nonce': data.nonce || ''
+    }, merged.headers || {});
+
+    return window.fetch(window.location.origin + '/wp-json' + path, merged).then(function (response) {
       return response.json().then(function (body) {
         return { ok: response.ok, status: response.status, body: body };
       });
@@ -40,6 +51,9 @@
     var _useState5 = useState('');
     var message = _useState5[0];
     var setMessage = _useState5[1];
+    var _useState6 = useState({ brandTitle: '', showLogo: false });
+    var settings = _useState6[0];
+    var setSettings = _useState6[1];
 
     useEffect(function () {
       if (tab === 'news' || tab === 'newpost') {
@@ -50,6 +64,16 @@
       if (tab === 'categories' || tab === 'newpost') {
         api('/wp/v2/categories?per_page=100&_fields=id,name,slug,count').then(function (res) {
           setCats(res.ok ? res.body : []);
+        });
+      }
+      if (tab === 'settings') {
+        api('/dra-react/v1/settings').then(function (res) {
+          if (res.ok && res.body) {
+            setSettings({
+              brandTitle: res.body.brandTitle || '',
+              showLogo: !!res.body.showLogo
+            });
+          }
         });
       }
     }, [tab]);
@@ -74,6 +98,15 @@
       });
     }
 
+    function saveSettings() {
+      api('/dra-react/v1/settings', {
+        method: 'POST',
+        body: JSON.stringify(settings)
+      }).then(function (res) {
+        setMessage(res.ok ? 'Configurações salvas.' : 'Erro ao salvar configurações.');
+      });
+    }
+
     return el('div', { className: 'dra-react-shell' },
       message ? el(Notice, { status: 'info', isDismissible: true }, message) : null,
       el('div', { className: 'dra-react-tabs' },
@@ -86,7 +119,14 @@
       ),
       el(Card, { className: 'dra-react-card' },
         el(CardBody, null,
-          tab === 'home' ? el('div', null, el('h2', null, 'Visão geral'), el('p', null, 'Painel React com layout original e CRUD básico do WordPress.')) : null,
+          tab === 'home' ? el('div', null,
+            el('h2', null, 'Página Inicial'),
+            el('p', null, 'Visão geral do painel com o comportamento original portado para React.'),
+            el('ul', null,
+              el('li', null, 'Notícias e categorias integradas ao WordPress'),
+              el('li', null, 'Novo post via REST API'),
+              el('li', null, 'Configurações mínimas do painel'))
+          ) : null,
           tab === 'news' ? el('div', null,
             el('h2', null, 'Notícias'),
             el('ul', null, posts.map(function (post) {
@@ -108,12 +148,26 @@
             el(Button, { variant: 'primary', onClick: savePost }, 'Salvar post')
           ) : null,
           tab === 'modules' ? el('div', null,
-            el('h2', null, 'Módulos'),
-            el('p', null, 'Estrutura preparada para módulos originais do painel.')
-          ) : null,
+              el('h2', null, 'Módulos do Site'),
+              el('p', null, 'Estrutura preparada para os módulos originais do painel.')
+            ) : null,
           tab === 'settings' ? el('div', null,
-            el('h2', null, 'Configurações'),
-            el('p', null, 'Sem extras além do painel original.')) : null
+              el('h2', null, 'Configurações Gerais'),
+              el(TextControl, {
+                value: settings.brandTitle,
+                onChange: function (value) { setSettings(Object.assign({}, settings, { brandTitle: value })); },
+                placeholder: 'Título do painel'
+              }),
+              el('label', null,
+                el('input', {
+                  type: 'checkbox',
+                  checked: !!settings.showLogo,
+                  onChange: function (event) { setSettings(Object.assign({}, settings, { showLogo: event.target.checked })); }
+                }),
+                ' Exibir logo'
+              ),
+              el(Button, { variant: 'primary', onClick: saveSettings }, 'Salvar Configurações')
+            ) : null
         )
       )
     );
@@ -121,6 +175,10 @@
 
   var root = document.getElementById('dra-react-root');
   if (root) {
-    wp.element.render(el(App), root);
+    if (typeof wp.element.createRoot === 'function') {
+      wp.element.createRoot(root).render(el(App));
+    } else if (typeof wp.element.render === 'function') {
+      wp.element.render(el(App), root);
+    }
   }
 })(window.wp);

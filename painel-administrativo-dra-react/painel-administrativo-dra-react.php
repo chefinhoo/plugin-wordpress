@@ -21,5 +21,6 @@ define('DRA_REACT_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('DRA_REACT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once DRA_REACT_PLUGIN_PATH . 'includes/class-dra-react-plugin.php';
+require_once DRA_REACT_PLUGIN_PATH . 'includes/class-dra-react-rest.php';
 
 DRA_React_Plugin::get_instance();

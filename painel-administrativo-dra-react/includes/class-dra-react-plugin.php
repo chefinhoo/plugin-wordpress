@@ -71,7 +71,8 @@ final class DRA_React_Plugin {
                 'isMain'      => is_multisite() && is_main_site() ? 'true' : 'false',
                 'siteName'    => get_bloginfo('name'),
                 'novoLinks'   => new stdClass(),
-                'logoutUrl'   => wp_logout_url()
+                'logoutUrl'   => wp_logout_url(),
+                'nonce'       => wp_create_nonce('wp_rest')
             );
 
             wp_localize_script('dra-react-admin-behavior', 'draPanelData', $data);
